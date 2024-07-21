@@ -7,7 +7,7 @@
 <!--![Bitbucket open issues](https://img.shields.io/bitbucket/issues/gabrielbrandaosales/my-portfolio?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/gabrielbrandaosales/my-portfolio?style=for-the-badge)-->
 
-<a href='#' target="_blank">
+<a href='https://dogs-next-two.vercel.app/' target="_blank">
 <img src="/public/site-image.png" alt="Exemplo imagem">
 </a>  
 > Este projeto foi desenvolvido como um teste de aprendizado, visando simular um rework de uma rede social para uma tecnologia mais recente.
@@ -24,7 +24,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 - Você instalou a versão mais recente de `<Node v18.18.0>`
 - Você tem uma máquina `<Windows>`.
-- Você leu `<https://legacy.reactjs.org/docs/getting-started.html>`.
+- Você leu `<https://nextjs.org/docs/getting-started/installation>`.
 
 ## 🚀 Instalando Dogs Social Media
 
