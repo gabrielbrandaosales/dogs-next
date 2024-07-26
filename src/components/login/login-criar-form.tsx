@@ -1,12 +1,13 @@
+// @ts-nocheck
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import Button from '@/components/forms/button';
-import Input from '@/components/forms/input';
 import ErrorMessage from '../helper/error-message';
 import React from 'react';
 import styles from './login-form.module.css';
 import userPost from '@/actions/user-post';
+import Button from '@/components/forms/button';
+import Input from '@/components/forms/input';
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -32,12 +33,30 @@ export default function LoginCriarForm() {
   React.useEffect(() => {
     if (state.ok) window.location.href = '/conta';
   }, [state]);
+  console.log(state.error);
+
   return (
     <form action={action} className={styles.form}>
-      <Input label="Usuário" name="username" type="text" />
-      <Input label="Email" name="email" type="email" />
-      <Input label="Senha" name="password" type="password" />
-      <ErrorMessage error={state.error} />
+      <Input
+        label="Usuário"
+        error={state.error?.username && state.error.username?._errors[0]}
+        name="username"
+        type="text"
+      />
+
+      <Input
+        label="Email"
+        error={state.error?.email && state.error.email?._errors[0]}
+        name="email"
+        type="email"
+      />
+      <Input
+        label="Senha"
+        error={state.error?.password && state.error.password?._errors[0]}
+        name="password"
+        type="password"
+      />
+      {state.error instanceof String && state.error}
       <FormButton />
     </form>
   );

@@ -3,6 +3,9 @@
 import { USER_POST } from '@/functions/api';
 import apiError from '@/functions/api-errorr';
 import login from './login';
+import { loginCriarSchema } from '@/schemas/login-criar';
+import { z } from 'zod';
+import { format } from 'path';
 
 export default async function userPost(state: {}, formData: FormData) {
   const username = formData.get('username') as string | null;
@@ -10,14 +13,15 @@ export default async function userPost(state: {}, formData: FormData) {
   const password = formData.get('password') as string | null;
 
   try {
-    if (!username || !password || !email)
-      throw new Error('Preencha todos os campos');
-    if (password.length < 6)
-      throw new Error('Senha deve conter mais de 6 digitos.');
+    const result = loginCriarSchema.parse({ username, email, password });
+
     const { url } = USER_POST();
     const response = await fetch(url, {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(result),
     });
 
     if (!response.ok) throw new Error('Email ou usuário já cadastrado');
@@ -30,6 +34,11 @@ export default async function userPost(state: {}, formData: FormData) {
 
     return { data: null, ok: true, error: '' };
   } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      const formatError = error.format();
+      return { ok: false, error: formatError, data: null };
+    }
+
     return apiError(error);
   }
 }
