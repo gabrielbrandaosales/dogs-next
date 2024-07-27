@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
@@ -33,6 +32,7 @@ export default function LoginCriarForm() {
   React.useEffect(() => {
     if (state.ok) window.location.href = '/conta';
   }, [state]);
+
   console.log(state.error);
 
   return (
@@ -56,7 +56,7 @@ export default function LoginCriarForm() {
         name="password"
         type="password"
       />
-      {state.error instanceof String && state.error}
+      {typeof state.error === 'string' && <ErrorMessage error={state.error} />}
       <FormButton />
     </form>
   );

@@ -5,7 +5,6 @@ import apiError from '@/functions/api-errorr';
 import login from './login';
 import { loginCriarSchema } from '@/schemas/login-criar';
 import { z } from 'zod';
-import { format } from 'path';
 
 export default async function userPost(state: {}, formData: FormData) {
   const username = formData.get('username') as string | null;
@@ -14,15 +13,16 @@ export default async function userPost(state: {}, formData: FormData) {
 
   try {
     const result = loginCriarSchema.parse({ username, email, password });
-
+    formData.set('username', result.username);
+    formData.set('email', result.email);
+    formData.set('password', result.password);
     const { url } = USER_POST();
     const response = await fetch(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(result),
+      body: formData,
     });
+
+    console.log(response.ok);
 
     if (!response.ok) throw new Error('Email ou usuário já cadastrado');
 
