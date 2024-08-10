@@ -14,7 +14,7 @@ export default async function ContaPage() {
   const { data: user } = await userGet();
   const { data } = await photosGet({ user: user?.username });
   return (
-    <main>
+    <section>
       {data?.length ? (
         <Feed photos={data} />
       ) : (
@@ -35,6 +35,6 @@ export default async function ContaPage() {
           </Link>
         </div>
       )}
-    </main>
+    </section>
   );
 }
