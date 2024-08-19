@@ -1,4 +1,5 @@
 'use client';
+
 import React from 'react';
 import FeedIcon from '@/icons/feed-icon';
 import EstatisticasIcon from '@/icons/estatisticas-icon';
@@ -13,10 +14,10 @@ import { useUser } from '@/contexts/user-context';
 
 function getTitle(pathname: string) {
   switch (pathname) {
+    case '/conta/postar':
+      return 'Poste Sua Foto';
     case '/conta/estatisticas':
       return 'Estatísticas';
-    case '/conta/postar':
-      return 'Poste sua foto';
     default:
       return 'Minha Conta';
   }
@@ -31,10 +32,10 @@ export default function ContaHeader() {
     setMobileMenu(false);
   }, [pathname]);
 
-  const { setUserState } = useUser();
+  const { setUser } = useUser();
   async function handleLogout() {
     await logout();
-    setUserState(null);
+    setUser(null);
   }
 
   return (

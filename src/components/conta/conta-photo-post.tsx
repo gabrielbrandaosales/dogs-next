@@ -30,33 +30,34 @@ export default function ContaPhotoPost() {
   });
 
   const [img, setImg] = React.useState('');
-  function handleImageChange({ target }: React.ChangeEvent<HTMLInputElement>) {
-    if (target.files) setImg(URL.createObjectURL(target.files[0]));
+  function handleImgChange({ target }: React.ChangeEvent<HTMLInputElement>) {
+    if (target.files) {
+      setImg(URL.createObjectURL(target.files[0]));
+    }
   }
 
   return (
-    <>
-      <section className={`${styles.photoPost} animeLeft`}>
-        <form action={action}>
-          <Input label="Nome" name="nome" type="text" />
-          <Input label="Peso" name="peso" type="number" />
-          <Input label="Idade" name="idade" type="number" />
-          <input
-            type="file"
-            name="img"
-            id="img"
-            className={styles.file}
-            onChange={handleImageChange}
-          />
-          <ErrorMessage error={state.error} />
-          <FormButton />
-        </form>
-        <div>
-          <div
-            className={styles.preview}
-            style={{ backgroundImage: `url(${img})` }}></div>
-        </div>
-      </section>
-    </>
+    <section className={`${styles.photoPost} animeLeft`}>
+      <form action={action}>
+        <Input label="Nome" name="nome" type="text" />
+        <Input label="Peso" name="peso" type="number" />
+        <Input label="Idade" name="idade" type="number" />
+        <input
+          onChange={handleImgChange}
+          type="file"
+          name="img"
+          id="img"
+          className={styles.file}
+        />
+        <ErrorMessage error={state.error} />
+        <FormButton />
+      </form>
+      <div>
+        <div
+          className={styles.preview}
+          style={{ backgroundImage: `url(${img})` }}
+        ></div>
+      </div>
+    </section>
   );
 }

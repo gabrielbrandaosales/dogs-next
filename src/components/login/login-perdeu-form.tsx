@@ -16,7 +16,7 @@ function FormButton() {
       {pending ? (
         <Button disabled={pending}>Enviando...</Button>
       ) : (
-        <Button>Enviar email</Button>
+        <Button>Enviar Email</Button>
       )}
     </>
   );
@@ -37,7 +37,7 @@ export default function LoginPerdeuForm() {
 
   return (
     <form action={action} className={styles.form}>
-      <Input label="Email / Usuario" name="login" type="text" />
+      <Input label="Email / Usuário" name="login" type="text" />
       <input type="hidden" name="url" value={url} />
       <ErrorMessage error={state.error} />
       {state.ok ? (

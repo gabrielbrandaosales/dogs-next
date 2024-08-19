@@ -23,7 +23,7 @@ function FormButton() {
   );
 }
 
-export default function LoginForrm() {
+export default function LoginForm() {
   const [state, action] = useFormState(login, {
     ok: false,
     error: '',
@@ -32,7 +32,8 @@ export default function LoginForrm() {
 
   React.useEffect(() => {
     if (state.ok) window.location.href = '/conta';
-  }, [state]);
+  }, [state.ok]);
+
   return (
     <>
       <form action={action} className={styles.form}>
@@ -46,7 +47,7 @@ export default function LoginForrm() {
       </Link>
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
-        <p>Ainda não possui conta? Cadastre-se no site</p>
+        <p>Ainda não possui conta? Cadastre-se no site.</p>
         <Link className="button" href="/login/criar">
           Cadastro
         </Link>

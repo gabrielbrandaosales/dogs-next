@@ -5,7 +5,7 @@ export default async function Home() {
   const { data } = await photosGet();
   return (
     <section className="container mainContainer">
-      {data?.length && <Feed photos={data} />}
+      {data && <Feed photos={data} />}
     </section>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import photosGet, { Photo } from '@/actions/photos-get';
-import FeedFotos from './feed-photos';
+import FeedPhotos from './feed-photos';
 import React from 'react';
 
 export default function Feed({
@@ -36,7 +36,9 @@ export default function Feed({
     async function getPagePhotos(page: number) {
       const actionData = await photosGet(
         { page, total: 6, user: 0 },
-        { cache: 'no-store' },
+        {
+          cache: 'no-store',
+        },
       );
       if (actionData && actionData.data !== null) {
         const { data } = actionData;
@@ -55,7 +57,6 @@ export default function Feed({
       window.removeEventListener('scroll', infiniteScroll);
       window.removeEventListener('wheel', infiniteScroll);
     }
-
     return () => {
       window.removeEventListener('scroll', infiniteScroll);
       window.removeEventListener('wheel', infiniteScroll);
@@ -64,7 +65,7 @@ export default function Feed({
 
   return (
     <div>
-      <FeedFotos photos={photosFeed} />
+      <FeedPhotos photos={photosFeed} />
       {loading && <p>Carregando...</p>}
     </div>
   );

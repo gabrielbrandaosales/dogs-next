@@ -31,7 +31,8 @@ export default function LoginCriarForm() {
 
   React.useEffect(() => {
     if (state.ok) window.location.href = '/conta';
-  }, [state]);
+  }, [state.ok]);
+
   return (
     <form action={action} className={styles.form}>
       <Input label="Usuário" name="username" type="text" />

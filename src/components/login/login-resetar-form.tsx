@@ -6,7 +6,7 @@ import Input from '@/components/forms/input';
 import ErrorMessage from '../helper/error-message';
 import React from 'react';
 import styles from './login-form.module.css';
-import passwordReset from '@/actions/passwords-reset';
+import passwordReset from '@/actions/password-reset';
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -16,7 +16,7 @@ function FormButton() {
       {pending ? (
         <Button disabled={pending}>Resetando...</Button>
       ) : (
-        <Button>Resetar senha</Button>
+        <Button>Resetar Senha</Button>
       )}
     </>
   );
