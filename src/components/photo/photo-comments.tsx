@@ -33,13 +33,13 @@ const PhotoComments = (props: {
           </li>
         ))}
       </ul>
-      {/* {user && (
+      {user && (
         <PhotoCommentsForm
           single={props.single}
           id={props.id}
           setComments={setComments}
         />
-      )} */}
+      )}
     </>
   );
 };
