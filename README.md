@@ -101,7 +101,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 ## 🧑 Author
 
-<img src='https://github.com/gabrielbrandaosales.png' alt='Foto do autor' width='100px'/>
+<a href='https://github.com/gabrielbrandaosales' target='_blank'><img src='https://github.com/gabrielbrandaosales.png' alt='Foto do autor' width='100px'/></a>
 
 <sub>Gabriel Brandão</sub>
 
